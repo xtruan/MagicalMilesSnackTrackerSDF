@@ -13,7 +13,6 @@ class ThemeParkSnacksView extends WatchUi.SimpleDataField {
 	
 	hidden var mCalories = 0.0f;
 	hidden var mDisplayItem = 0;
-	hidden var mMotivationItem = 0;
 
     hidden var mIceCreamBarField;
     hidden var mChurroField;
@@ -106,8 +105,8 @@ class ThemeParkSnacksView extends WatchUi.SimpleDataField {
 
 	function getDisplayText() as String {
     	mDisplayItem++;
-		if (mDisplayItem > 6*5) {
-			mDisplayItem = 0;
+		if (mDisplayItem > 5*5) {
+			mDisplayItem = 1;
 		}
         
         if (mDisplayItem <= 1*5) {
@@ -120,27 +119,6 @@ class ThemeParkSnacksView extends WatchUi.SimpleDataField {
         	return (mCalories / DOLE_WHIP_CALS).format("%.1f") + WatchUi.loadResource(Rez.Strings.snack_fou_unit_sm);
         } else if (mDisplayItem <= 5*5) {
 			return (mCalories / TURKEY_LEG_CALS).format("%.1f") + WatchUi.loadResource(Rez.Strings.snack_fiv_unit_sm);
-		} else {
-			return getMotivationText();
-		}
-    }
-    
-    function getMotivationText() as String {
-    	mMotivationItem++;
-		if (mMotivationItem > 5*5) {
-			mMotivationItem = 0;
-		}
-		
-		if (mMotivationItem <= 1*5) {
-        	return WatchUi.loadResource(Rez.Strings.motivation_one);
-        } else if (mMotivationItem <= 2*5) {
-        	return WatchUi.loadResource(Rez.Strings.motivation_two);
-        } else if (mMotivationItem <= 3*5) {
-        	return WatchUi.loadResource(Rez.Strings.motivation_thr);
-        } else if (mMotivationItem <= 4*5) {
-        	return WatchUi.loadResource(Rez.Strings.motivation_fou);
-        } else if (mMotivationItem <= 5*5) {
-			return WatchUi.loadResource(Rez.Strings.motivation_fiv);
 		} else {
 			return "";
 		}
